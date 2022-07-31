@@ -5,14 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Exception;
 
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
+
 class AuthController extends Controller
 {
     public function login(Request $request) {
 
-        $credentials = $request->only('cpf', 'password');
+        $credentials = $request->only(['cpf', 'password']);
         
     
-        if (!$token = auth()->attempt($credentials)) {
+        if (!$token = auth('api')->attempt($credentials)) {
             throw new Exception('Não autorizado!', 401);
         }
 

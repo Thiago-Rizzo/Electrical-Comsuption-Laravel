@@ -14,6 +14,18 @@ class User extends Authenticatable implements JWTSubject
     use Notifiable;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name',
+        'email',
+        'cpf',
+        'password',
+    ];
+    
+    /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *
      * @return mixed
@@ -32,18 +44,6 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'cpf',
-        'password',
-    ];
 
     public function container() {
         return $this->HasMany(Container::class);
