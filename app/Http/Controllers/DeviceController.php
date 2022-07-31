@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Device;
 use Illuminate\Http\Request;
 
 class DeviceController extends Controller
@@ -11,9 +12,9 @@ class DeviceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($user_id)
     {
-        //
+        return Device::query()->where('user_id', $user_id)->get();
     }
 
     /**
@@ -24,7 +25,11 @@ class DeviceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $device = new Device();
+        $device->fill($request->all());
+        $device->save();
+
+        return;
     }
 
     /**
@@ -35,7 +40,7 @@ class DeviceController extends Controller
      */
     public function show($id)
     {
-        //
+        return Device::query()->find($id);
     }
 
     /**
@@ -47,7 +52,11 @@ class DeviceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $device = Device::query()->find($id);
+        $device->fill($request->all());
+        $device->save();
+    
+        return;
     }
 
     /**
@@ -58,6 +67,6 @@ class DeviceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return Device::query()->find($id)->delete();
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Container;
 
 class ContainerController extends Controller
 {
@@ -11,9 +12,11 @@ class ContainerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($user_id)
     {
-        //
+        return Container::query()
+        ->where('user_id', $user_id)
+        ->get();
     }
 
     /**
@@ -24,7 +27,11 @@ class ContainerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $container = new Container();
+        $container->fill($request->all());
+        $container->save();
+
+        return;
     }
 
     /**
@@ -35,7 +42,7 @@ class ContainerController extends Controller
      */
     public function show($id)
     {
-        //
+        return Container::query()->find($id);
     }
 
     /**
@@ -47,7 +54,11 @@ class ContainerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $container = Container::query()->find($id);
+        $container->fill($request->all());
+        $container->save();
+
+        return ;
     }
 
     /**
@@ -58,6 +69,6 @@ class ContainerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return Container::query()->find($id)->delete();
     }
 }

@@ -15,7 +15,13 @@ class CreateContainersTable extends Migration
     {
         Schema::create('containers', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->unsignedBigInteger('flag_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
+            $table->foreign('flag_id')->on('flags')->references('id');
+            $table->foreign('user_id')->on('users')->references('id');
         });
     }
 
