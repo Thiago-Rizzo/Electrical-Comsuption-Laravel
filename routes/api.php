@@ -14,5 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::apiResource('');
+// Route::apiResource('');
 
