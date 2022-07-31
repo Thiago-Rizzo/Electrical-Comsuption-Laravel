@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-<<<<<<< HEAD
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -43,7 +42,3 @@ Route::get('show-user/{user_id}', '\App\Http\Controllers\UserController@show');
 Route::post('store-user', '\App\Http\Controllers\UserController@store');
 Route::put('update-user/{user_id}', '\App\Http\Controllers\UserController@update');
 Route::delete('delete-user/{user_id}', '\App\Http\Controllers\UserController@delete');
-=======
-// Route::apiResource('');
-
->>>>>>> 5484456e46ee74e931d8a5ced005cb3fae1bd66c
