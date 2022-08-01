@@ -1,0 +1,543 @@
+{
+	"info": {
+		"_postman_id": "0ec66d80-e9e9-405c-a870-9763936d6fd6",
+		"name": "Projeto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Containers",
+			"item": [
+				{
+					"name": "Containers by User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTY1OTMyNTE1MSwiZXhwIjoxNjU5MzI4NzUxLCJuYmYiOjE2NTkzMjUxNTEsImp0aSI6IlFUQUxYcmFRMWdWbWRudkUiLCJzdWIiOjIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.FfbkgtLX9ncvfQHLpnK54ta9CLaQjNyei8DJwO9UoHI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}index-container",
+							"host": [
+								"{{base}}index-container"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Container Show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTY1OTMyNTE1MSwiZXhwIjoxNjU5MzI4NzUxLCJuYmYiOjE2NTkzMjUxNTEsImp0aSI6IlFUQUxYcmFRMWdWbWRudkUiLCJzdWIiOjIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.FfbkgtLX9ncvfQHLpnK54ta9CLaQjNyei8DJwO9UoHI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Mansão",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "flag_id",
+									"value": "1",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "user_id",
+									"value": "2",
+									"type": "default",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base}}show-container/2",
+							"host": [
+								"{{base}}show-container"
+							],
+							"path": [
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Container Store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTY1OTMyNTE1MSwiZXhwIjoxNjU5MzI4NzUxLCJuYmYiOjE2NTkzMjUxNTEsImp0aSI6IlFUQUxYcmFRMWdWbWRudkUiLCJzdWIiOjIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.FfbkgtLX9ncvfQHLpnK54ta9CLaQjNyei8DJwO9UoHI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Mansão",
+									"type": "default"
+								},
+								{
+									"key": "flag_id",
+									"value": "1",
+									"type": "default"
+								},
+								{
+									"key": "user_id",
+									"value": "2",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base}}store-container",
+							"host": [
+								"{{base}}store-container"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Container Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTY1OTMyNTE1MSwiZXhwIjoxNjU5MzI4NzUxLCJuYmYiOjE2NTkzMjUxNTEsImp0aSI6IlFUQUxYcmFRMWdWbWRudkUiLCJzdWIiOjIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.FfbkgtLX9ncvfQHLpnK54ta9CLaQjNyei8DJwO9UoHI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Outra coisa\",\r\n    \"user_id\": \"2\",\r\n    \"flag_id\":\"4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}update-container/2",
+							"host": [
+								"{{base}}update-container"
+							],
+							"path": [
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Container Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTY1OTMyNTE1MSwiZXhwIjoxNjU5MzI4NzUxLCJuYmYiOjE2NTkzMjUxNTEsImp0aSI6IlFUQUxYcmFRMWdWbWRudkUiLCJzdWIiOjIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.FfbkgtLX9ncvfQHLpnK54ta9CLaQjNyei8DJwO9UoHI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base}}delete-container/",
+							"host": [
+								"{{base}}delete-container"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Container Device Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTY1OTMyNTE1MSwiZXhwIjoxNjU5MzI4NzUxLCJuYmYiOjE2NTkzMjUxNTEsImp0aSI6IlFUQUxYcmFRMWdWbWRudkUiLCJzdWIiOjIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.FfbkgtLX9ncvfQHLpnK54ta9CLaQjNyei8DJwO9UoHI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base}}delete-container-device/2/1",
+							"host": [
+								"{{base}}delete-container-device"
+							],
+							"path": [
+								"2",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "trizzo904@gmail.com",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base}}login",
+							"host": [
+								"{{base}}login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Register",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTY1OTMyOTE1MywiZXhwIjoxNjU5MzMyNzUzLCJuYmYiOjE2NTkzMjkxNTMsImp0aSI6InV1ZmdBeUNVNTdBMkNUbE8iLCJzdWIiOjIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.KwKZ1bY6VLW5WDwUs71t0ULNUCgLQZm1SGWVoRhMsVw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Léo Benaducci\",\r\n    \"email\": \"seila@nosabaddonou.com\",\r\n    \"cpf\": \"12345658978\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}store-user",
+							"host": [
+								"{{base}}store-user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Devices",
+			"item": [
+				{
+					"name": "Device Index",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTY1OTMyNTE1MSwiZXhwIjoxNjU5MzI4NzUxLCJuYmYiOjE2NTkzMjUxNTEsImp0aSI6IlFUQUxYcmFRMWdWbWRudkUiLCJzdWIiOjIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.FfbkgtLX9ncvfQHLpnK54ta9CLaQjNyei8DJwO9UoHI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}index-device",
+							"host": [
+								"{{base}}index-device"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Device Show",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTY1OTMyNTE1MSwiZXhwIjoxNjU5MzI4NzUxLCJuYmYiOjE2NTkzMjUxNTEsImp0aSI6IlFUQUxYcmFRMWdWbWRudkUiLCJzdWIiOjIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.FfbkgtLX9ncvfQHLpnK54ta9CLaQjNyei8DJwO9UoHI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}show-device/2",
+							"host": [
+								"{{base}}show-device"
+							],
+							"path": [
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Device Store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTY1OTMyOTE1MywiZXhwIjoxNjU5MzMyNzUzLCJuYmYiOjE2NTkzMjkxNTMsImp0aSI6InV1ZmdBeUNVNTdBMkNUbE8iLCJzdWIiOjIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.KwKZ1bY6VLW5WDwUs71t0ULNUCgLQZm1SGWVoRhMsVw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Macarrão\",\r\n    \"user_id\":\"2\",\r\n    \"power\":\"1500\",\r\n    \"description\":\"macarrão eletrico\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}store-device",
+							"host": [
+								"{{base}}store-device"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Device Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTY1OTMyOTE1MywiZXhwIjoxNjU5MzMyNzUzLCJuYmYiOjE2NTkzMjkxNTMsImp0aSI6InV1ZmdBeUNVNTdBMkNUbE8iLCJzdWIiOjIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.KwKZ1bY6VLW5WDwUs71t0ULNUCgLQZm1SGWVoRhMsVw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"outro nome agora \"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}update-device/3",
+							"host": [
+								"{{base}}update-device"
+							],
+							"path": [
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Device Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTY1OTMyOTE1MywiZXhwIjoxNjU5MzMyNzUzLCJuYmYiOjE2NTkzMjkxNTMsImp0aSI6InV1ZmdBeUNVNTdBMkNUbE8iLCJzdWIiOjIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.KwKZ1bY6VLW5WDwUs71t0ULNUCgLQZm1SGWVoRhMsVw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base}}delete-device/3",
+							"host": [
+								"{{base}}delete-device"
+							],
+							"path": [
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "User Show",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTY1OTMyOTE1MywiZXhwIjoxNjU5MzMyNzUzLCJuYmYiOjE2NTkzMjkxNTMsImp0aSI6InV1ZmdBeUNVNTdBMkNUbE8iLCJzdWIiOjIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.KwKZ1bY6VLW5WDwUs71t0ULNUCgLQZm1SGWVoRhMsVw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}show-user",
+							"host": [
+								"{{base}}show-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTY1OTMzMDEwMiwiZXhwIjoxNjU5MzMzNzAyLCJuYmYiOjE2NTkzMzAxMDIsImp0aSI6IlNnc256SUFQVG9tUlg5YUsiLCJzdWIiOjMsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.s1gmm_ou8eInElIF_xFLOPrFhHUGnJi3ZbkizuKC2QE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base}}delete-user",
+							"host": [
+								"{{base}}delete-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTY1OTMzMDY4NywiZXhwIjoxNjU5MzM0Mjg3LCJuYmYiOjE2NTkzMzA2ODcsImp0aSI6IkFSRFoyMWJzV2VKNUtrWTUiLCJzdWIiOjIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.kHOWyxP01-kjrVAkDucBGW8JxTPRnsC_D4SJeZfJ4Ys",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"mudei de nome\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}update-user",
+							"host": [
+								"{{base}}update-user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
