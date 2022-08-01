@@ -12,9 +12,11 @@ class DeviceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($user_id)
+    public function index()
     {
-        return Device::query()->where('user_id', $user_id)->get();
+        return Device::query()
+            ->where('user_id', auth('api')->user()->id)
+            ->get();
     }
 
     /**
@@ -29,7 +31,7 @@ class DeviceController extends Controller
         $device->fill($request->all());
         $device->save();
 
-        return;
+        return response()->json(['status' => 'success', 'message' => 'Dispositivo cadastrado com sucesso'], 200);
     }
 
     /**
@@ -55,8 +57,8 @@ class DeviceController extends Controller
         $device = Device::query()->find($id);
         $device->fill($request->all());
         $device->save();
-    
-        return;
+
+        return response()->json(['status' => 'success', 'message' => 'Dispositivo atualizado com sucesso'], 200);
     }
 
     /**
@@ -67,6 +69,7 @@ class DeviceController extends Controller
      */
     public function destroy($id)
     {
-        return Device::query()->find($id)->delete();
+        Device::query()->find($id)->delete();
+        return response()->json(['status' => 'success', 'message' => 'Dispositivo excluido com sucesso'], 200);
     }
 }

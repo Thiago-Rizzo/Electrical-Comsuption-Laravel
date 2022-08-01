@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Container extends Model
@@ -13,15 +12,18 @@ class Container extends Model
         'user_id',
     ];
 
-    public function device() {
-        return $this->HasMany(Container::class);
+    public function devices()
+    {
+        return $this->HasMany(ContainerDevice::class);
     }
-    
-    public function user() {
+
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
-    
-    public function flag() {
+
+    public function flag()
+    {
         return $this->belongsTo(Flag::class);
     }
 }

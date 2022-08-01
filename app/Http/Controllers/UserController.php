@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -17,20 +19,20 @@ class UserController extends Controller
     {
         $user = new User();
         $user->fill($request->all());
+        $user->password = Hash::make($request->password);
         $user->save();
 
-        return;
+        return response()->json(['status' => 'success', 'message' => 'Usuário cadastrado com sucesso'], 200);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        return User::query()->find($id);
+        return response()->json(auth('api')->user(), 200);
     }
 
     /**
@@ -40,13 +42,18 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $user = User::query()->find($id);
+        $user = User::query()->find(auth('api')->user()->id);
+
+        if (!Hash::check($request->password, $user->password))
+            throw new Exception('Senha Incorreta!', 401);
+
         $user->fill($request->all());
+        $user->password = Hash::make($request->password);
         $user->save();
 
-        return;
+        return response()->json(['status' => 'success', 'message' => 'Usuário atualizado com sucesso'], 200);
     }
 
     /**
@@ -55,8 +62,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        return User::query()->find($id)->delete();
+        User::query()->find(auth('api')->user()->id)->delete();
+        return response()->json(['status' => 'success', 'message' => 'Usuário excluido com sucesso'], 200);
     }
 }

@@ -45,11 +45,13 @@ class User extends Authenticatable implements JWTSubject
         'password',
     ];
 
-    public function container() {
+    public function container()
+    {
         return $this->HasMany(Container::class);
     }
 
-    public function device() {
+    public function device()
+    {
         return $this->HasMany(Device::class);
     }
 }

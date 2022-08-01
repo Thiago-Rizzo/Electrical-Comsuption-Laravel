@@ -13,8 +13,8 @@ class Flag extends Model
         'icon',
     ];
 
-    public function container() {
+    public function container()
+    {
         return $this->HasMany(Container::class);
     }
-    
 }

@@ -1,8 +1,10 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\ContainerController;
+use App\Http\Controllers\DeviceController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\AuthController;
+use \App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,28 +19,30 @@ use \App\Http\Controllers\AuthController;
 
 // Login routes
 Route::post('login', [AuthController::class, 'login']);
-Route::post('logout', 'AuthController@logout');
-Route::post('refresh', 'AuthController@refresh');
-Route::post('me', 'AuthController@me');
+Route::post('register', [UserController::class, 'store']);
 
-// Container routes
-Route::get('index-container/{user_id}', 'ContainerController@index');
-Route::get('show-container/{container_id}', 'ContainerController@show');
-Route::post('store-container', 'ContainerController@store');
-Route::put('update-container/{container_id}', 'ContainerController@update');
-Route::delete('delete-container/{container_id}', 'ContainerController@delete');
-Route::delete('delete-device-container/{container_id}/{device_id}', 'ContainerController@deleteDeviceController');
+Route::group(['middleware' => ['apiJWT']], function () { // precisa estar Logado
+    Route::post('logout', [AuthController::class, 'logout']);
+    Route::post('refresh', [AuthController::class, 'refresh']);
+    Route::post('me', [AuthController::class, 'me']);
 
-// Device routes
-Route::get('index-device/{user_id}','DeviceController@index');
-Route::get('show-device/{device_id}','DeviceController@show');
-Route::post('store-device','DeviceController@store');
-Route::put('update-device/{device_id}','DeviceController@update');
-Route::delete('delete-device/{device_id}','DeviceController@delete');
+    // Container routes
+    Route::get('index-container', [ContainerController::class, 'index']);
+    Route::get('show-container/{id}', [ContainerController::class, 'show']);
+    Route::post('store-container', [ContainerController::class, 'store']);
+    Route::put('update-container/{id}', [ContainerController::class, 'update']);
+    Route::delete('delete-container/{id}', [ContainerController::class, 'destroy']);
+    Route::delete('delete-container-device/{container_id}/{device_id}', [ContainerController::class, 'deleteDeviceContainer']);
 
-// User routes
-Route::get('index-user/{user_id}', 'UserController@index');
-Route::get('show-user/{user_id}', 'UserController@show');
-Route::post('store-user', 'UserController@store');
-Route::put('update-user/{user_id}', 'UserController@update');
-Route::delete('delete-user/{user_id}', 'UserController@delete');
+    // Device routes
+    Route::get('index-device', [DeviceController::class, 'index']);
+    Route::get('show-device/{id}', [DeviceController::class, 'show']);
+    Route::post('store-device', [DeviceController::class, 'store']);
+    Route::put('update-device/{id}', [DeviceController::class, 'update']);
+    Route::delete('delete-device/{id}', [DeviceController::class, 'destroy']);
+
+    // User routes
+    Route::get('show-user', [UserController::class, 'show']);
+    Route::put('update-user', [UserController::class, 'update']);
+    Route::delete('delete-user', [UserController::class, 'destroy']);
+});

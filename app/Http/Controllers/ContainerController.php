@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Container;
+use Illuminate\Support\Facades\DB;
 
 class ContainerController extends Controller
 {
@@ -12,11 +13,11 @@ class ContainerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($user_id)
+    public function index()
     {
         return Container::query()
-        ->where('user_id', $user_id)
-        ->get();
+            ->where('user_id', auth('api')->user()->id)
+            ->get();
     }
 
     /**
@@ -31,7 +32,7 @@ class ContainerController extends Controller
         $container->fill($request->all());
         $container->save();
 
-        return;
+        return response()->json(['status' => 'success', 'message' => 'Painel cadastrado com sucesso'], 200);
     }
 
     /**
@@ -42,7 +43,7 @@ class ContainerController extends Controller
      */
     public function show($id)
     {
-        return Container::query()->find($id);
+        return Container::query()->with(['devices', 'flag'])->find($id);
     }
 
     /**
@@ -52,13 +53,13 @@ class ContainerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id, Request $request)
     {
         $container = Container::query()->find($id);
         $container->fill($request->all());
         $container->save();
 
-        return ;
+        return response()->json(['status' => 'success', 'message' => 'Painel atualizado com sucesso'], 200);
     }
 
     /**
@@ -69,6 +70,18 @@ class ContainerController extends Controller
      */
     public function destroy($id)
     {
-        return Container::query()->find($id)->delete();
+        Container::query()->find($id)->delete();
+
+        return response()->json(['status' => 'success', 'message' => 'Painel excluido com sucesso'], 200);
+    }
+
+    public function deleteDeviceContainer($container_id, $device_id)
+    {
+        DB::table('container_devices')
+            ->where('container_id', $container_id)
+            ->where('device_id', $device_id)
+            ->delete();
+
+        return response()->json(['status' => 'success', 'message' => 'Dispositivo removido com sucesso'], 200);
     }
 }
