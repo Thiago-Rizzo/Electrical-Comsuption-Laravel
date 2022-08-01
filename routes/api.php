@@ -27,7 +27,7 @@ Route::group(['middleware' => ['apiJWT']], function () { // precisa estar Logado
     Route::post('me', [AuthController::class, 'me']);
 
     // Container routes
-    Route::apiResource('container', ContainerController::class);
+    Route::apiResource('containers', ContainerController::class);
     // Route::get('show-container/{id}', [ContainerController::class, 'show']);
     // Route::post('store-container', [ContainerController::class, 'store']);
     // Route::put('update-container/{id}', [ContainerController::class, 'update']);
