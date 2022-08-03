@@ -11,6 +11,12 @@ class Flag extends Model
         'name',
         'cost',
         'icon',
+        'id'
+    ];
+
+    protected $hidden = [
+        'created_at',
+        'updated_at'
     ];
 
     public function container()

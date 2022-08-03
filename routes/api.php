@@ -4,6 +4,7 @@ use App\Http\Controllers\ContainerController;
 use App\Http\Controllers\DeviceController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\AuthController;
+use App\Http\Controllers\FlagController;
 use \App\Http\Controllers\UserController;
 
 /*
@@ -25,6 +26,8 @@ Route::group(['middleware' => ['apiJWT']], function () { // precisa estar Logado
     Route::post('logout', [AuthController::class, 'logout']);
     Route::post('refresh', [AuthController::class, 'refresh']);
     Route::post('me', [AuthController::class, 'me']);
+
+    Route::apiResource('flags', FlagController::class);
 
     // Container routes
     Route::apiResource('containers', ContainerController::class);
