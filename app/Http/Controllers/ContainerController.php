@@ -31,6 +31,7 @@ class ContainerController extends Controller
     {
         $container = new Container();
         $container->fill($request->all());
+        $container->user_id = auth('api')->user()->id;
         $container->save();
 
         return response()->json(['status' => 'success', 'message' => 'Painel cadastrado com sucesso'], 200);
