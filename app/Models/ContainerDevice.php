@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class ContainerDevice extends Model
@@ -14,4 +13,14 @@ class ContainerDevice extends Model
         'consu_days',
         'quantity',
     ];
+
+    public function container()
+    {
+        return $this->belongsTo(Container::class);
+    }
+
+    public function device()
+    {
+        return $this->belongsTo(Device::class);
+    }
 }

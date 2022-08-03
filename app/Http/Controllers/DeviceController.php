@@ -29,6 +29,7 @@ class DeviceController extends Controller
     {
         $device = new Device();
         $device->fill($request->all());
+        $device->user_id = auth('api')->user()->id;
         $device->save();
 
         return response()->json(['status' => 'success', 'message' => 'Dispositivo cadastrado com sucesso'], 200);
