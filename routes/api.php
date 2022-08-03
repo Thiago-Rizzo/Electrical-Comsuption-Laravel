@@ -35,7 +35,7 @@ Route::group(['middleware' => ['apiJWT']], function () { // precisa estar Logado
     Route::delete('delete-container-device/{container_id}/{device_id}', [ContainerController::class, 'deleteDeviceContainer']);
 
     // Device routes
-    Route::apiResource('device', DeviceController::class);
+    Route::apiResource('devices', DeviceController::class);
     // Route::get('show-device/{id}', [DeviceController::class, 'show']);
     // Route::post('store-device', [DeviceController::class, 'store']);
     // Route::put('update-device/{id}', [DeviceController::class, 'update']);
