@@ -16,7 +16,7 @@ class ContainerController extends Controller
     public function index()
     {
         return Container::query()
-            ->with('flag')
+            ->with(['flag', 'devices'])
             ->where('user_id', auth('api')->user()->id)
             ->get();
     }

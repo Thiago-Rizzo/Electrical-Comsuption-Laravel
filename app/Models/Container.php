@@ -14,7 +14,7 @@ class Container extends Model
 
     public function devices()
     {
-        return $this->belongsToMany(Device::class, 'container_devices')->withTimestamps();
+        return $this->belongsToMany(Device::class, 'container_devices');
     }
 
     public function user()
