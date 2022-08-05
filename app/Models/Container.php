@@ -17,6 +17,11 @@ class Container extends Model
         return $this->belongsToMany(Device::class, 'container_devices');
     }
 
+    public function cont_dev()
+    {
+        return $this->hasMany(ContainerDevice::class, 'container_id', 'id');
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

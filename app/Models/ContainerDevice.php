@@ -14,6 +14,10 @@ class ContainerDevice extends Model
         'quantity',
     ];
 
+    protected $with = [
+        'device'
+    ];
+
     public function container()
     {
         return $this->belongsTo(Container::class);

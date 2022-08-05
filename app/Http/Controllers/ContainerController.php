@@ -15,10 +15,26 @@ class ContainerController extends Controller
      */
     public function index()
     {
-        return Container::query()
-            ->with(['flag', 'devices'])
+        $containers = Container::query()
+            ->with(['flag', 'cont_dev'])
             ->where('user_id', auth('api')->user()->id)
             ->get();
+
+        // consuTime * consuDays * quantity * 1.04 / 1000
+
+        foreach ($containers as $container) {
+            $container->kw_total = 0;
+            foreach ($container->cont_dev as $device) {
+                $container->kw_total += $device->device->power * $device->consu_time * $device->consu_days * $device->quantity / 1000;
+            }
+            $container->rs_total = ($container->kw_total * 1.04) + ($container->kw_total * $container->flag->cost);
+            $container->rs_total = round($container->rs_total, 2);
+
+            $container->qtd_devices = count($container->cont_dev);
+        }
+
+
+        return $containers;
     }
 
     /**
@@ -55,7 +71,7 @@ class ContainerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($id ,Request $request)
+    public function update($id, Request $request)
     {
         $container = Container::query()->find($id);
         $container->fill($request->all());
