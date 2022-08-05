@@ -55,11 +55,13 @@ class ContainerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($id, Request $request)
+    public function update($id ,Request $request)
     {
         $container = Container::query()->find($id);
         $container->fill($request->all());
         $container->save();
+
+        $container->devices()->sync($request->devices);
 
         return response()->json(['status' => 'success', 'message' => 'Painel atualizado com sucesso'], 200);
     }
