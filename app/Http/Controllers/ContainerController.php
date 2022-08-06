@@ -20,8 +20,6 @@ class ContainerController extends Controller
             ->where('user_id', auth('api')->user()->id)
             ->get();
 
-        // consuTime * consuDays * quantity * 1.04 / 1000
-
         foreach ($containers as $container) {
             $container->kw_total = 0;
             foreach ($container->cont_dev as $device) {
