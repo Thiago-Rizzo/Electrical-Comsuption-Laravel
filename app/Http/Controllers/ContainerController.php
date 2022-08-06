@@ -73,6 +73,7 @@ class ContainerController extends Controller
     {
         $container = Container::query()->find($id);
         $container->fill($request->all());
+        $container->user_id = auth('api')->user->id;
         $container->save();
 
         $container->devices()->sync($request->devices);
@@ -93,12 +94,22 @@ class ContainerController extends Controller
         return response()->json(['status' => 'success', 'message' => 'Painel excluido com sucesso'], 200);
     }
 
-    public function deleteDeviceContainer($container_id, $device_id)
+    public function deleteContainerDevice($container_id, $device_id)
     {
-        DB::table('container_devices')
+        ContainerDevice::query()
             ->where('container_id', $container_id)
             ->where('device_id', $device_id)
             ->delete();
+
+        return response()->json(['status' => 'success', 'message' => 'Dispositivo removido com sucesso'], 200);
+    }
+
+    public function getContainerDevice($container_id)
+    {
+        ContainerDevice::query()
+            ->with('container')
+            ->where('container_id', $container_id)
+            ->get();
 
         return response()->json(['status' => 'success', 'message' => 'Dispositivo removido com sucesso'], 200);
     }
