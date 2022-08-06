@@ -73,7 +73,7 @@ class ContainerController extends Controller
     {
         $container = Container::query()->find($id);
         $container->fill($request->all());
-        $container->user_id = auth('api')->user->id;
+        $container->user_id = auth('api')->user()->id;
         $container->save();
 
         $container->devices()->sync($request->devices);
