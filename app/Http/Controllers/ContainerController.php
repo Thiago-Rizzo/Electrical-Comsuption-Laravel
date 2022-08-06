@@ -59,7 +59,11 @@ class ContainerController extends Controller
      */
     public function show($id)
     {
-        return Container::query()->with(['devices', 'flag'])->find($id);
+        $container = Container::query()
+            ->with(['cont_dev'])
+            ->where('user_id', auth('api')->user()->id)
+            ->find($id);
+        return $container;
     }
 
     /**
