@@ -67,6 +67,7 @@ class UserController extends Controller
     {
         $user = User::query()->find(auth('api')->user()->id);
 
+        dd($request);
         if (!Hash::check($request->password, $user->password))
             throw new Exception('Senha Incorreta!', 401);
 
