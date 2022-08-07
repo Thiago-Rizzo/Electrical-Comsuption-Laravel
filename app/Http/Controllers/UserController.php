@@ -57,6 +57,28 @@ class UserController extends Controller
     }
 
     /**
+     * Update the specified resource in storage by type.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update_v1(Request $request)
+    {
+        $user = User::query()->find(auth('api')->user()->id);
+
+        if (!Hash::check($request->password, $user->password))
+            throw new Exception('Senha Incorreta!', 401);
+
+        if ($request->type === 'password') $user->password = Hash::make($request->newPassword);
+        else $user->email = $request->newEmail;
+
+        $user->save();
+
+        return response()->json(['status' => 'success', 'message' => 'Usuário atualizado com sucesso'], 200);
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
