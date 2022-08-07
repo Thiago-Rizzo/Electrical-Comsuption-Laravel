@@ -63,15 +63,15 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update_v1(Request $request)
+    public function update_v1(Request $request, $type)
     {
         $user = User::query()->find(auth('api')->user()->id);
 
         if (!Hash::check($request->password, $user->password))
             throw new Exception('Senha Incorreta!', 401);
 
-        if ($request->type === 'password') $user->password = Hash::make($request->newPassword);
-        if ($request->type === 'email') $user->email = $request->newEmail;
+        if ($type === 'password') $user->password = Hash::make($request->newPassword);
+        if ($type === 'email') $user->email = $request->newEmail;
 
         $user->save();
 
