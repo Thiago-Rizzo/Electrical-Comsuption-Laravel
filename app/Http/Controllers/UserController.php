@@ -70,8 +70,8 @@ class UserController extends Controller
         if (!Hash::check($request->password, $user->password))
             throw new Exception('Senha Incorreta!', 401);
 
-        if ($type === 'password') $user->password = Hash::make($request->newPassword);
-        if ($type === 'email') $user->email = $request->newEmail;
+        if ($request->newPassword != null) $user->password = Hash::make($request->newPassword);
+        if ($request->newEmail != null) $user->email = $request->newEmail;
 
         $user->save();
 
