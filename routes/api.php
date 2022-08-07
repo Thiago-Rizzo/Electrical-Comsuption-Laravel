@@ -40,6 +40,6 @@ Route::group(['middleware' => ['apiJWT']], function () { // precisa estar Logado
     // User routes
     Route::get('show-user', [UserController::class, 'show']);
     Route::put('update-user', [UserController::class, 'update']);
-    Route::put('update-user/{type}', [UserController::class, 'update_v1']);
+    Route::put('update-user-v1', [UserController::class, 'update_v1']);
     Route::delete('delete-user', [UserController::class, 'destroy']);
 });

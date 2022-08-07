@@ -63,7 +63,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update_v1(Request $request, $type)
+    public function update_v1(Request $request)
     {
         $user = User::query()->find(auth('api')->user()->id);
 
