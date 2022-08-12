@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Container;
+use App\Models\ContainerDevice;
 use Illuminate\Support\Facades\DB;
 
 class ContainerController extends Controller
