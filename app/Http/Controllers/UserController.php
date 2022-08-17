@@ -84,9 +84,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy(Request $request)
     {
-        User::query()->find(auth('api')->user()->id)->delete();
+        $user = User::query()->find(auth('api')->user()->id);
+
+        if (!Hash::check($request->password, $user->password))
+            throw new Exception('Senha Incorreta!', 401);
+
+        $user->delete();
         return response()->json(['status' => 'success', 'message' => 'Usuário excluido com sucesso'], 200);
     }
 }
