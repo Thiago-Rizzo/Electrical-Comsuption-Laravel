@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Container;
 use App\Models\ContainerDevice;
+use Exception;
 use Illuminate\Support\Facades\DB;
 
 class ContainerController extends Controller
@@ -81,7 +82,12 @@ class ContainerController extends Controller
         $container->user_id = auth('api')->user()->id;
         $container->save();
 
-        $container->devices()->sync($request->devices);
+        try {
+            $container->devices()->sync($request->devices);
+        }
+        catch (Exception $e) {
+            return response()->json(['status' => 'error', 'message' => 'erro inesperado'], 429);
+        }
 
         return response()->json(['status' => 'success', 'message' => 'Painel atualizado com sucesso'], 200);
     }
